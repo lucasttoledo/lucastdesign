@@ -1,9 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Seus estilos personalizados vêm abaixo */
-
 :root {
   font-family: 'Urbanist', sans-serif;
   color: #f6f6f6;
@@ -437,10 +431,6 @@ img {
 
 .project-row.image-first {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.project-copy {
-  /* max-width: 440px; */
 }
 
 .project-copy .eyebrow {
