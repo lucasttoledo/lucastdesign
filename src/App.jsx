@@ -1,10 +1,13 @@
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight, Mail, Sparkles } from 'lucide-react'
 import { FaBehance, FaLinkedinIn, FaMedium } from 'react-icons/fa6'
+import { useEffect, useState } from 'react'
 import SiteHeader from './components/SiteHeader'
 import Hero from './components/Hero'
 import ProjectCard from './components/ProjectCard'
 import PillarCard from './components/PillarCard'
 import { metrics, pillars, projects } from './data'
+
+const mediumFeedUrl = '/api/medium-feed'
 
 function ProjectsSection() {
   return (
@@ -24,7 +27,7 @@ function ProjectsSection() {
         ))}
       </div>
 
-      <a className="outline-button" href="mailto:oi@lucastdesign.com.br?subject=Mais%20projetos">
+      <a className="pill-button outline-button" href="mailto:oi@lucastdesign.com.br?subject=Mais%20projetos">
         Tem mais projeto legal, clicando aqui <ArrowRight size={24} />
       </a>
     </section>
@@ -99,6 +102,157 @@ function AboutSection() {
   )
 }
 
+function MediumSection() {
+  const [posts, setPosts] = useState([])
+  const [status, setStatus] = useState('loading')
+
+  useEffect(() => {
+    const controller = new AbortController()
+
+    async function loadPosts() {
+      try {
+        const response = await fetch(mediumFeedUrl, { signal: controller.signal })
+        if (!response.ok) {
+          throw new Error(`O feed do Medium respondeu com status ${response.status}.`)
+        }
+
+        const feed = new DOMParser().parseFromString(await response.text(), 'application/xml')
+        if (feed.getElementsByTagName('parsererror').length > 0) {
+          throw new Error('O feed do Medium retornou um XML inválido.')
+        }
+
+        const latestPosts = Array.from(feed.getElementsByTagName('item'))
+          .slice(0, 4)
+          .map((item) => {
+            const content = item.getElementsByTagName('content:encoded')[0]?.textContent
+              || item.getElementsByTagName('description')[0]?.textContent
+              || ''
+            const article = new DOMParser().parseFromString(content, 'text/html')
+            const description = article.body.textContent.replace(/\s+/g, ' ').trim()
+
+            return {
+              title: item.getElementsByTagName('title')[0]?.textContent?.trim(),
+              url: item.getElementsByTagName('link')[0]?.textContent?.trim(),
+              image: article.querySelector('img')?.getAttribute('src'),
+              description: description.length > 180
+                ? `${description.slice(0, 177).trimEnd()}...`
+                : description,
+            }
+          })
+          .filter((post) => post.title && post.url)
+
+        setPosts(latestPosts)
+        setStatus('success')
+      } catch (error) {
+        if (error.name === 'AbortError') return
+        console.error('Não foi possível carregar os artigos do Medium.', error)
+        setStatus('error')
+      }
+    }
+
+    loadPosts()
+    return () => controller.abort()
+  }, [])
+
+  return (
+    <section className="medium-section" id="medium">
+      <div className="section-shell medium-inner">
+        <div className="pillars-heading">
+          <h2>Minhas reflexões no Medium</h2>
+          <p>Lá falo sobre a minha visão de design, tecnologia e o futuro da profissão. Também compartilho minhas experiências profissionais e pessoais</p>
+        </div>
+
+        {status === 'loading' && (
+          <p className="medium-message" role="status">Carregando os artigos mais recentes...</p>
+        )}
+        {status === 'error' && (
+          <p className="medium-message" role="status">
+            Não foi possível carregar os artigos agora. Você pode ler todos no{' '}
+            <a href="https://lucastdesign.medium.com/" target="_blank" rel="noreferrer">Medium</a>.
+          </p>
+        )}
+        {status === 'success' && posts.length === 0 && (
+          <p className="medium-message" role="status">Nenhum artigo foi encontrado no feed do Medium.</p>
+        )}
+        {status === 'success' && posts.length > 0 && (
+          <div className="medium-grid">
+            {posts.map((post) => (
+              <a
+                className="medium-card pillar-card"
+                href={post.url}
+                key={post.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {post.image && <img className="medium-card-image" src={post.image} alt="" loading="lazy" />}
+                <div className="medium-card-content">
+                  <div className="medium-card-top">
+                    {/* <span className="pillar-number">Medium</span>
+                    <ArrowRight size={22} aria-hidden="true" /> */}
+                  </div>
+                  <h3>{post.title}</h3>
+                  <p>{post.description}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
+
+        <a className="pill-button medium-all-link" href="https://lucastdesign.medium.com/" target="_blank" rel="noreferrer">
+          Ver todos os artigos <ArrowRight size={20} aria-hidden="true" />
+        </a>
+      </div>
+    </section>
+  )
+}
+
+function ContactSection() {
+  function handleSubmit(event) {
+    event.preventDefault()
+
+    const formData = new FormData(event.currentTarget)
+    const name = formData.get('name')
+    const email = formData.get('email')
+    const details = formData.get('details')
+    const body = `Nome: ${name}\nE-mail: ${email}\n\nDetalhes do projeto:\n${details}`
+
+    window.location.href = `mailto:oi@lucastdesign.com.br?subject=${encodeURIComponent('Contato pelo site Lucas T Design')}&body=${encodeURIComponent(body)}`
+  }
+
+  return (
+    <section className="contact-section" id="contato">
+      <div className="section-shell contact-inner">
+        <div className="contact-copy">
+          <h2>Vamos construir o seu próximo produto.</h2>
+          <p>
+            Tem uma ideia ou quer melhorar a experiência do seu produto digital? Me conte um pouco sobre o seu projeto. Vou responder o mais rápido possível.
+          </p>
+          <a className="contact-email" href="mailto:lucastdesign@gmail.com">
+            <Mail size={22} aria-hidden="true" />
+            lucastdesign@gmail.com
+          </a>
+        </div>
+
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <p className="contact-form-heading"><span aria-hidden="true" />Preencha o formulário</p>
+          <label htmlFor="contact-name">Seu nome</label>
+          <input id="contact-name" name="name" type="text" placeholder="Como posso te chamar?" autoComplete="name" required />
+
+          <label htmlFor="contact-email">Seu e-mail</label>
+          <input id="contact-email" name="email" type="email" placeholder="voce@empresa.com" autoComplete="email" required />
+
+          <label htmlFor="contact-details">Detalhes do projeto</label>
+          <textarea id="contact-details" name="details" placeholder="Conte um pouco sobre sua ideia ou os objetivos do projeto..." rows="3" required />
+
+          <button className="pill-button contact-submit" type="submit">
+            Enviar mensagem <ArrowRight size={22} aria-hidden="true" />
+          </button>
+        </form>
+      </div>
+    </section>
+  )
+}
+
 function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -129,6 +283,8 @@ export default function App() {
         <PillarsSection />
         <Marquee />
         <AboutSection />
+        <MediumSection />
+        <ContactSection />
       </main>
       <SiteFooter />
     </>
