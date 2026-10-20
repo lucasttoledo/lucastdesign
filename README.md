@@ -13,6 +13,10 @@ The latest four articles are loaded from `api/medium-feed.js`. This endpoint fet
 
 On Vercel, `api/medium-feed.js` runs as a serverless function. Locally, `vite.config.js` provides the `/api/medium-feed` development middleware.
 
+## Project case studies
+
+Project cards open `/projetos/<project-slug>` pages. Slugs, case study copy, and gallery images are defined in `src/data.js`; the shared detail layout and image lightbox are in `src/components/ProjectDetail.jsx`. Existing project IDs are also accepted as route aliases.
+
 ## React Compiler
 
 The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).

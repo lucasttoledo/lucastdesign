@@ -1,25 +1,29 @@
 import { ArrowRight, Mail, Sparkles } from 'lucide-react'
-import { FaBehance, FaLinkedinIn, FaMedium, FaXTwitter } from 'react-icons/fa6'
 import { useEffect, useState } from 'react'
 import SiteHeader from './components/SiteHeader'
+import SiteFooter from './components/SiteFooter'
 import Hero from './components/Hero'
 import ProjectCard from './components/ProjectCard'
 import PillarCard from './components/PillarCard'
+import ProjectDetail from './components/ProjectDetail'
 import { metrics, pillars, projects } from './data'
 
 const mediumFeedUrl = '/api/medium-feed'
 
 function ProjectsSection() {
+  const rowProjects = projects.filter((project) => project.presentation === 'row')
+  const thumbnailProjects = projects.filter((project) => project.presentation === 'thumbnail')
+
   return (
     <section className="projects-section section-shell" id="projetos">
 
       <div className="projects-list">
-        {projects.map((project) => <ProjectCard key={project.id} project={project} />)}
+        {rowProjects.map((project) => <ProjectCard key={project.id} project={project} />)}
       </div>
 
       <div className="project-thumbnails" aria-label="Mais projetos">
-        {projects.map((project) => (
-          <a href={`mailto:oi@lucastdesign.com.br?subject=${encodeURIComponent(project.title)}`} key={`${project.id}-thumb`} className="thumbnail-card">
+        {thumbnailProjects.map((project) => (
+          <a href={`/projetos/${project.slug || project.id}`} key={`${project.id}-thumb`} className="thumbnail-card">
             <img src={project.image} alt={project.alt} loading="lazy" />
             <span>{project.title}</span>
             <ArrowRight size={24} />
@@ -253,37 +257,26 @@ function ContactSection() {
   )
 }
 
-function SiteFooter() {
-  return (
-    <footer className="site-footer">
-      <div className="footer-main">
-        <p>© {new Date().getFullYear()} Lucastdesign. Todos os direitos reservados.</p>
-        <nav className="footer-socials" aria-label="Redes sociais">
-          <a href="mailto:oi@lucastdesign.com.br" aria-label="E-mail">
-            <Mail aria-hidden="true" />
-          </a>
-          <a href="https://www.behance.net/lucasttoledo" aria-label="Behance" target="_blank" rel="noreferrer">
-            <FaBehance aria-hidden="true" />
-          </a>
-          <a href="https://www.linkedin.com/in/lucastdesign" aria-label="LinkedIn" target="_blank" rel="noreferrer">
-            <FaLinkedinIn aria-hidden="true" />
-          </a>
-          <a href="https://x.com/lucasttoledo" aria-label="X" target="_blank" rel="noreferrer">
-            <FaXTwitter aria-hidden="true" />
-          </a>
-          <a href="https://lucastdesign.medium.com/" aria-label="Medium" target="_blank" rel="noreferrer">
-            <FaMedium aria-hidden="true" />
-          </a>
-        </nav>
-      </div>
-      <a className="footer-brand" href="#inicio" aria-label="Lucas T Design, voltar ao início">
-        <img src="/assets/lucastdesign_footer.svg" alt="Lucas T Design" />
-      </a>
-    </footer>
-  )
-}
-
 export default function App() {
+  const projectMatch = window.location.pathname.match(/^\/projetos\/([^/]+)\/?$/)
+
+  if (projectMatch) {
+    const project = projects.find(({ id, slug }) => id === projectMatch[1] || slug === projectMatch[1])
+    return project
+      ? <ProjectDetail project={project} />
+      : (
+        <>
+          <SiteHeader projectPage />
+          <main className="project-not-found section-shell">
+            <p className="eyebrow"><span />Projeto não encontrado</p>
+            <h1>Esse projeto não está disponível.</h1>
+            <a className="pill-button outline" href="/#projetos"><ArrowRight size={20} /> Voltar para os projetos</a>
+          </main>
+          <SiteFooter />
+        </>
+      )
+  }
+
   return (
     <>
       <SiteHeader />

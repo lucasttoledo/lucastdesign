@@ -8,8 +8,9 @@ const navItems = [
   { label: 'Contato', href: 'mailto:oi@lucastdesign.com.br', icon: Mail },
 ]
 
-export default function SiteHeader() {
+export default function SiteHeader({ projectPage = false }) {
   const [isScrolled, setIsScrolled] = useState(false)
+  const homeHref = projectPage ? '/' : ''
 
   useEffect(() => {
     const updateHeader = () => setIsScrolled(window.scrollY > 40)
@@ -21,13 +22,13 @@ export default function SiteHeader() {
 
   return (
     <header className={`site-header${isScrolled ? ' is-scrolled' : ''}`}>
-      <a className="wordmark" href="#inicio" aria-label="Lucas T Design, início">
+      <a className="wordmark" href={`${homeHref}#inicio`} aria-label="Lucas T Design, início">
         LUCAS<span>T</span>DESIGN
       </a>
 
       <nav className="main-nav" aria-label="Navegação principal">
         {navItems.map(({ label, href, icon: Icon }) => (
-          <a key={label} href={href}>
+          <a key={label} href={projectPage && href.startsWith('#') ? `/${href}` : href}>
             <Icon size={24} strokeWidth={1.8} />
             <span>{label}</span>
           </a>
