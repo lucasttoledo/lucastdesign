@@ -27,7 +27,7 @@ function ProjectsSection() {
         ))}
       </div>
 
-      <a className="pill-button outline-button" href="mailto:oi@lucastdesign.com.br?subject=Mais%20projetos">
+      <a className="pill-button outline-button" href="https://www.behance.net/lucasttoledo" target="_blank">
         Tem mais projeto legal, clicando aqui <ArrowRight size={24} />
       </a>
     </section>

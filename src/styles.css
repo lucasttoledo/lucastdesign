@@ -130,8 +130,11 @@ h2 {
 }
 
 .header-email {
-  color: #b8b8b8;
-  font-size: 18px;
+    color: #ffffff;
+    font-size: 18px;
+    background: #ff2c30;
+    padding: 8px 12px;
+    border-radius: 25px;
 }
 
 .hero {
@@ -148,6 +151,20 @@ h2 {
   content: '';
   inset: 0;
   background: url('/assets/bg_site.png') center bottom / cover no-repeat;
+}
+
+.hero-video {
+    position: absolute;
+    z-index: -1;
+    bottom: 70px;
+    right: 0;
+    width: 1020px;
+    height: 680px;
+    object-fit: contain;
+    object-position: right bottom;
+    opacity: 1;
+    mask-image: linear-gradient(to top, transparent, #000 28%);
+    pointer-events: none;
 }
 
 .hero-glow {
@@ -251,6 +268,10 @@ h2 {
     transform: none;
     animation: none;
   }
+
+  .hero-video {
+    display: none;
+  }
 }
 
 .hero-description {
@@ -332,6 +353,11 @@ h2 {
   cursor: pointer;
   transition: transform .2s ease, background .2s ease;
 }
+
+  .pill-button.outline {
+    border: 1px solid #ff2c30;
+    background-color: #000D0D;
+  }
 
 .pill-button:hover {
   background: #e51e28;
@@ -684,7 +710,7 @@ h2 {
 
 .medium-card-image {
   width: 100%;
-  height: 150px;
+  height: 250px;
   object-fit: cover;
 }
 
@@ -767,7 +793,6 @@ h2 {
 .contact-copy h2 {
   margin: 0 0 20px;
   color: var(--accent);
-  font-size: clamp(40px, 4.6vw, 64px);
   font-weight: 800;
   line-height: 1.05;
 }
@@ -1170,6 +1195,17 @@ blockquote {
     right: 4%;
     top: auto;
     bottom: 66px;
+  }
+
+  .hero-video {
+    top: auto;
+    right: -8%;
+    bottom: 0;
+    width: 100%;
+    height: 55%;
+    object-position: center bottom;
+    opacity: .75;
+    mask-image: linear-gradient(to bottom, transparent, #000 28%);
   }
 
   .scroll-cue {

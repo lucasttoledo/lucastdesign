@@ -20,13 +20,24 @@ function AnimatedText({ text, startIndex = 0 }) {
 export default function Hero() {
   return (
     <section className="hero" id="inicio">
+      <video
+        className="hero-video"
+        src="/assets/laptop_lucastdesign_home.webm"
+        autoPlay
+        muted
+        // loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      />
       <div className="hero-inner">
         <div className="hero-copy">
           <p className="eyebrow">
             <span className="eyebrow-dot" aria-hidden="true" />
             Olá, me chamo Lucas
           </p>
-          <h1>
+          <h1>Sou <span className="hero-accent">Product Designer<br />Sênior</span> e Web Designer</h1>
+          {/* <h1>
             <AnimatedText text="Sou " />
             <span className="hero-accent">
               <AnimatedText text="Product Designer" startIndex={4} />
@@ -36,7 +47,7 @@ export default function Hero() {
               <AnimatedText text="Sênior" startIndex={20} />
             </em>
             <AnimatedText text=" e Web Designer" startIndex={26} />
-          </h1>
+          </h1> */}
           <p className="hero-description">
             Criando soluções que unem UX estratégico, estética e desenvolvimento há mais de 15 anos. Trabalhando com grandes empresas e líderes de tecnologia.
           </p>

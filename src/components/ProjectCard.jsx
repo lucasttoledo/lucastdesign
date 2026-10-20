@@ -14,7 +14,7 @@ export default function ProjectCard({ project }) {
       <p className="eyebrow"><span />{project.eyebrow}</p>
       <h3>{project.title}</h3>
       <p className="project-description">{project.description}</p>
-      <a className="pill-button" href={`mailto:oi@lucastdesign.com.br?subject=${encodeURIComponent(`Projeto: ${project.title}`)}`}>
+      <a className="pill-button outline" href={`mailto:oi@lucastdesign.com.br?subject=${encodeURIComponent(`Projeto: ${project.title}`)}`}>
         Explorar projeto <ArrowUpRight size={24} />
       </a>
     </div>
