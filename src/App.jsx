@@ -66,24 +66,30 @@ function AboutSection() {
   return (
     <section className="about-section" id="sobre">
       <div className="quote-wrap">
-        <h2><em>“O design bom simplifica.</em> O design<br className="desktop-break" /> excepcional torna-se invisível.”</h2>
+        <h2>
+          <em>“O design bom simplifica.</em> O design<br className="desktop-break" /> excepcional torna-se invisível.”
+        </h2>
         <p className="quote-caption">
-          Dom Normam sempre disse para removermos o ruído visual e as decorações desnecessárias para dar espaço à conversão pura e ao valor do produto.
+          Don Norman sempre disse para removermos o ruído visual e as decorações desnecessárias para dar espaço à conversão pura e ao valor do produto.
         </p>
       </div>
-      <div className="metrics-grid section-shell">
-        {metrics.map((metric) => (
-          <div className="metric" key={metric.label}>
-            <strong>{metric.value}</strong>
-            <span>{metric.label}</span>
-          </div>
-        ))}
+      <div className="metrics-band">
+        <div className="metrics-grid section-shell">
+          {metrics.map((metric) => (
+            <div className="metric" key={metric.label}>
+              <strong>{metric.value}</strong>
+              <span>{metric.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="about-me">
         <figure className="about-me-portrait">
-          <img className="about-me-photo" src="../dist/assets/Fotos_Familia.gif" alt="Lucas Toledo, Product Designer" loading="lazy" />
+          <img className="about-me-photo" src="/assets/Foto_Familia.png" alt="Lucas com sua família" loading="lazy" />
+          <img className="about-me-avatar" src="/assets/Lucas.png" alt="Retrato de Lucas Toledo" loading="lazy" />
         </figure>
         <div className="about-me-copy">
+          <h2>Quem sou eu</h2>
           <p>Sou formado pelo Instituto de Ensino Superior de Bauru e, ao longo da minha trajetória, transformo dados e ideias em interfaces que colocam a experiência do usuário no centro.</p>
           <p>Comecei minha carreira no Jornal da Cidade e depois atuei em grandes empresas. Nesse percurso, aprofundei minha prática em prototipagem, testes de usabilidade, pesquisa com usuários e layouts responsivos. Também utilizo o Figma para criar soluções claras e funcionais.</p>
           <p>Valorizo a colaboração e a comunicação. Trabalho com diferentes perfis de equipe e clientes para alinhar as decisões de design aos objetivos de cada projeto.</p>
