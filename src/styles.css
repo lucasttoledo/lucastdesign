@@ -1036,40 +1036,50 @@ blockquote {
 }
 
 .site-footer {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
-  gap: 22px;
-  padding: 40px 6vw 40px;
+  overflow: hidden;
+  padding-top: 40px;
   color: #d8d8d8;
-  background: #0b0b0b;
+  background: #000d0d;
+}
+
+.footer-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  width: min(100% - 12vw, 1200px);
+  margin: 0 auto;
+  padding-bottom: 40px;
 }
 
 .site-footer p {
   margin: 0;
-  color: #aaa;
+  color: #f0f3f2;
   font-size: 18px;
-  text-align: center;
 }
 
 .footer-socials {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-  gap: 16px;
+  gap: clamp(16px, 3vw, 25px);
+  padding: 24px 0;
 }
 
 .footer-socials a {
   display: grid;
   place-items: center;
-  width: 40px;
+  width: 48px;
   aspect-ratio: 1;
-  border: 1px solid #363636;
+  border: 1px solid #9a9a9a;
   border-radius: 50%;
-  color: var(--accent);
-  font-size: 20px;
-  background: var(--paper);
+  color: #d8d8d8;
+  font-size: 21px;
   transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+}
+
+.footer-socials svg {
+  width: 20px;
+  height: 20px;
 }
 
 .footer-socials a:hover {
@@ -1078,13 +1088,15 @@ blockquote {
   border-color: var(--accent);
 }
 
-.site-footer small {
-  grid-column: 1 / -1;
-  padding-top: 16px;
-  border-top: 1px solid #252525;
-  color: #777;
-  font-size: 18px;
-  text-align: center;
+.footer-brand {
+  display: block;
+  width: 100%;
+  line-height: 0;
+}
+
+.footer-brand img {
+  width: 100%;
+  height: auto;
 }
 
 @media (min-width: 1400px) {
@@ -1344,16 +1356,30 @@ blockquote {
   }
 
   .site-footer {
-    grid-template-columns: 1fr 1fr;
-    padding-inline: 22px;
+    padding-top: 30px;
+  }
+
+  .footer-main {
+    flex-direction: column;
+    gap: 20px;
+    width: calc(100% - 42px);
+    padding-bottom: 30px;
+    text-align: center;
   }
 
   .site-footer p {
-    display: none;
+    font-size: 16px;
   }
 
   .footer-socials {
-    grid-column: 2;
+    justify-content: center;
+    gap: clamp(12px, 5vw, 24px);
+    width: 100%;
+    padding: 16px 10px;
+  }
+
+  .footer-socials a {
+    width: 42px;
   }
 }
 
