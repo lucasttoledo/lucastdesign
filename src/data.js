@@ -131,21 +131,13 @@ export const projects = [
             { title: 'Wireframes iterativos', text: ', testados com o time interno para validação rápida.' },
             { title: 'Criação de um novo design system', text: ', acessível e pensado para contextos rurais.' },
           ],
-          images: [
-            {
-              image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85',
-              alt: 'Equipe colaborando em uma reunião',
-              caption: 'Alinhamento das dores e propostas iniciais com o cliente.',
-            },
-            {
-              image: 'https://images.unsplash.com/photo-1559028006-448665bd7c7f?auto=format&fit=crop&w=1600&q=85',
-              alt: 'Equipe trabalhando em conjunto',
-              caption: 'Processos de UX antes de iniciar o projeto.',
-            },
-          ],
         },
         {
           title: 'Desk Research e Benchmark',
+          stageImage: {
+            src: '/assets/agro_dores.png',
+            alt: 'Dores identificadas na pesquisa e no benchmark do projeto Agro',
+          },
           paragraphs: [
             'Realizei uma pesquisa de mercado (desk research) analisando ferramentas similares utilizadas no setor agro, como apps de manejo, CRMs agrícolas e soluções de controle de safra.',
             'Além disso, foi feito um benchmarking com plataformas de registro de visitas e monitoramento de lavouras, observando:',
@@ -158,16 +150,13 @@ export const projects = [
           ],
           quote:
             'Essa etapa trouxe insights que fundamentaram a proposta de uma interface mais leve, hierarquizada e adaptada ao uso em campo.',
-          images: [
-            {
-              image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85',
-              alt: 'Painel de dados em uma tela',
-              caption: 'Pesquisa de mercado e análise de soluções do setor.',
-            },
-          ],
         },
         {
           title: 'Jornada do Usuário & Fluxo de Navegação',
+          stageImage: {
+            src: '/assets/agro_perssonas.png',
+            alt: 'Personas usadas para mapear a jornada e os fluxos de navegação',
+          },
           paragraphs: [
             'Com base nas dores mapeadas, redesenhei a jornada do usuário, dividindo os perfis em dois fluxos principais:',
           ],
@@ -177,13 +166,6 @@ export const projects = [
           ],
           quote:
             'Utilizei o Miro para estruturar mapas de jornada do usuário, destacando momentos-chave e pontos de frustração ao longo da experiência. Também desenvolvi o fluxo de navegação da solução, organizando os principais módulos como Cadastro, Detalhes da Visita e Relatórios, de forma clara e funcional.',
-          images: [
-            {
-              image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85',
-              alt: 'Visualização de dados e métricas de produto',
-              caption: 'Jornadas e fluxos organizados conforme os perfis de uso.',
-            },
-          ],
         },
         {
           title: 'Redesenho e Prototipação',
@@ -192,73 +174,17 @@ export const projects = [
           ],
           quote:
             'Após a apresentação das propostas, o time aprovou o novo caminho, e segui com protótipos de baixa e depois de alta fidelidade, com navegação completa para testes.',
-          images: [
-            {
-              image: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&w=1600&q=85',
-              alt: 'Estudos de cor e composição visual',
-              caption: 'Redesenho das telas e prototipação da solução.',
-            },
-            {
-              image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=85',
-              alt: 'Notebook com uma interface digital',
-              caption: 'Protótipo navegável para validação dos fluxos.',
-            },
-          ],
         },
         {
           title: 'Versão APP',
           paragraphs: [
             'Interface mobile pensada para o dia a dia do consultor em campo, com navegação simples, foco nas visitas e registro de informações mesmo em áreas com pouca conexão.',
           ],
-          images: [
-            {
-              image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1200&q=85',
-              alt: 'Pessoa usando um smartphone',
-              caption: 'Interface mobile para o consultor em campo.',
-            },
-            {
-              image: 'https://images.unsplash.com/photo-1512499617640-c74ae3a79d37?auto=format&fit=crop&w=1200&q=85',
-              alt: 'Smartphone com uma interface de aplicativo',
-              caption: 'Fluxos de visitas e registro de informações.',
-            },
-            {
-              image: 'https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1200&q=85',
-              alt: 'Aplicativo aberto em um smartphone',
-              caption: 'Experiência desenhada para uso em campo.',
-            },
-            {
-              image: 'https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=1200&q=85',
-              alt: 'Trabalhador em uma plantação',
-              caption: 'Apoio às atividades do consultor no contexto rural.',
-            },
-          ],
         },
         {
           title: 'Versão WEB',
           paragraphs: [
             'Dashboard completo e responsivo para visualização estratégica de dados, gestão de safras e acompanhamento das visitas realizadas pelos consultores.',
-          ],
-          images: [
-            {
-              image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=85',
-              alt: 'Dashboard de dados em um monitor',
-              caption: 'Dashboard para visualização estratégica de dados.',
-            },
-            {
-              image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=85',
-              alt: 'Gráficos e indicadores em uma tela',
-              caption: 'Gestão de safras e acompanhamento das visitas.',
-            },
-            {
-              image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=85',
-              alt: 'Interface web exibida em um notebook',
-              caption: 'Experiência web responsiva para gestão agrícola.',
-            },
-            {
-              image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=85',
-              alt: 'Equipe acompanhando uma solução digital',
-              caption: 'Acompanhamento integrado da operação.',
-            },
           ],
         },
       ],
@@ -320,8 +246,7 @@ export const projects = [
     title: 'Intranet para grupo de empresas',
     description:
       'Redesign e estruturação de uma intranet para um grupo com quatro empresas, conectando comunicação, produtividade e cultura em um ambiente responsivo e feito para as diferentes realidades dos times.',
-    image:
-      'https://lucastdesign.com.br/wp-content/uploads/2025/04/urn_aaid_sc_US_9aa93720-984a-48ef-b762-e96b44821fa5.png',
+    image: '/assets/perfil-intranet-blur.jpg',
     alt: 'Interface da intranet desenvolvida para um grupo de empresas',
     layout: 'copy-first',
     presentation: 'row',
@@ -334,6 +259,16 @@ export const projects = [
       resultHeading: 'Um ponto de encontro para o grupo.',
       result:
         'O projeto estruturou uma intranet responsiva para conectar comunicação, documentos e serviços internos, respeitando as particularidades das quatro empresas e criando uma base visual consistente para os colaboradores.',
+      themeComparison: {
+        light: {
+          image: '/assets/intranet_03.png',
+          alt: 'Página inicial da intranet no tema claro',
+        },
+        dark: {
+          image: '/assets/intranet_07.png',
+          alt: 'Página de notícias da intranet no tema escuro',
+        },
+      },
       sections: [
         {
           title: 'Um espaço digital para aproximar as equipes',
@@ -364,14 +299,39 @@ export const projects = [
           ],
           images: [
             {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/urn_aaid_sc_US_9aa93720-984a-48ef-b762-e96b44821fa5-7.png',
-              alt: 'Tela da intranet do grupo de empresas',
-              caption: 'Conteúdos e serviços internos reunidos em um ambiente digital.',
+              image: '/assets/intranet_01.png',
+              alt: 'Página de notícias da intranet com comunicados e eventos',
+              caption: 'Notícias e eventos publicados na intranet.',
             },
             {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/urn_aaid_sc_US_9aa93720-984a-48ef-b762-e96b44821fa5-6.png',
-              alt: 'Interface de comunicação interna',
-              caption: 'Acesso simplificado a notícias, documentos e sistemas.',
+              image: '/assets/intranet_02.png',
+              alt: 'Página de campanhas internas da intranet',
+              caption: 'Campanhas e ações de comunicação para os colaboradores.',
+            },
+            {
+              image: '/assets/intranet_03.png',
+              alt: 'Página inicial da intranet com atalhos e informações',
+              caption: 'Página inicial com atalhos, serviços e informações do dia a dia.',
+            },
+            {
+              image: '/assets/intranet_04.png',
+              alt: 'Agenda de reserva de salas de reunião na intranet',
+              caption: 'Reserva de salas com visualização da agenda.',
+            },
+            {
+              image: '/assets/intranet_05.png',
+              alt: 'Tela de ponto eletrônico na intranet',
+              caption: 'Consulta de registros e saldo de horas.',
+            },
+            {
+              image: '/assets/intranet_06.png',
+              alt: 'Página inicial da intranet no tema escuro',
+              caption: 'Página inicial com opção de tema escuro.',
+            },
+            {
+              image: '/assets/intranet_07.png',
+              alt: 'Página de notícias no tema escuro',
+              caption: 'Notícias e comunicados no tema escuro.',
             },
           ],
         },
@@ -383,14 +343,34 @@ export const projects = [
           ],
           images: [
             {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/urn_aaid_sc_US_9aa93720-984a-48ef-b762-e96b44821fa5-9.png',
-              alt: 'Variação visual da intranet em tema claro',
-              caption: 'Tema claro e componentes consistentes para o grupo.',
+              image: '/assets/intranet_08.png',
+              alt: 'Diretório de colaboradores da intranet no tema escuro',
+              caption: 'Busca e consulta de contatos dos colaboradores.',
             },
             {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/urn_aaid_sc_US_9aa93720-984a-48ef-b762-e96b44821fa5-14.png',
-              alt: 'Outra tela da intranet em tema claro',
-              caption: 'Padrões reutilizáveis aplicados a diferentes áreas.',
+              image: '/assets/intranet_09.png',
+              alt: 'Perfil de colaborador com dados pessoais na intranet',
+              caption: 'Informações pessoais e funcionais do perfil.',
+            },
+            {
+              image: '/assets/intranet_10.png',
+              alt: 'Registros de ponto eletrônico no tema escuro',
+              caption: 'Acompanhamento dos registros de ponto.',
+            },
+            {
+              image: '/assets/intranet_11.png',
+              alt: 'Lista de vagas e oportunidades internas',
+              caption: 'Vagas e oportunidades disponíveis aos colaboradores.',
+            },
+            {
+              image: '/assets/intranet_12.png',
+              alt: 'Detalhes de registros de ponto eletrônico',
+              caption: 'Detalhamento semanal do histórico de ponto.',
+            },
+            {
+              image: '/assets/intranet_13.png',
+              alt: 'Resultados da pesquisa de clima organizacional',
+              caption: 'Resultados e indicadores da pesquisa de clima.',
             },
           ],
         },
@@ -571,9 +551,12 @@ export const projects = [
     title: 'CRM para aluguel de casas de luxo',
     description:
       'Sistema CRM e plataforma web para administrar e reservar casas premium de temporada na região de Orlando, conectando as necessidades da operação a uma experiência fluida para os hóspedes.',
-    image:
-      'https://lucastdesign.com.br/wp-content/uploads/2025/04/urn_aaid_sc_US_9efea529-d8ba-42ff-9d33-1334cd4e4680-1-1.png',
+    image: '/assets/mockup_projeto_crm.png',
     alt: 'Interface do CRM para aluguel de casas de temporada',
+    headerImage: {
+      src: '/assets/mockup_crm.png',
+      alt: 'Mockup do CRM para aluguel de casas de temporada',
+    },
     layout: 'image-first',
     presentation: 'row',
     caseStudy: {
@@ -621,24 +604,64 @@ export const projects = [
           ],
           images: [
             {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/urn_aaid_sc_US_9efea529-d8ba-42ff-9d33-1334cd4e4680-3-1.png',
-              alt: 'Tela da plataforma de aluguel de casas premium',
-              caption: 'Experiência digital para pesquisar casas de temporada.',
+              image: '/assets/crm_12.png',
+              alt: 'Tela de login do CRM para aluguel de casas de temporada',
+              caption: 'Tela de acesso ao CRM.',
             },
             {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/urn_aaid_sc_US_9efea529-d8ba-42ff-9d33-1334cd4e4680-8.png',
-              alt: 'Tela administrativa do CRM imobiliário',
-              caption: 'Ferramentas para apoiar a gestão dos imóveis.',
+              image: '/assets/crm_01.png',
+              alt: 'Dashboard do CRM imobiliário',
+              caption: 'Painel administrativo com indicadores e tarefas.',
             },
             {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/urn_aaid_sc_US_9efea529-d8ba-42ff-9d33-1334cd4e4680-7-1.png',
-              alt: 'Interface web do sistema de reservas',
-              caption: 'Fluxo web de reserva apresentado com clareza.',
+              image: '/assets/crm_02.png',
+              alt: 'Calendário de reservas do CRM imobiliário',
+              caption: 'Calendário para acompanhar reservas e disponibilidade.',
             },
             {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/urn_aaid_sc_US_9efea529-d8ba-42ff-9d33-1334cd4e4680-6.png',
-              alt: 'Painel com informações dos imóveis',
-              caption: 'Informações organizadas para apoiar a operação.',
+              image: '/assets/crm_03.png',
+              alt: 'Detalhes e informações de uma propriedade no CRM',
+              caption: 'Dados da propriedade organizados para a equipe.',
+            },
+            {
+              image: '/assets/crm_04.png',
+              alt: 'Informações do resort associadas a uma propriedade',
+              caption: 'Detalhes e comodidades do resort.',
+            },
+            {
+              image: '/assets/crm_05.png',
+              alt: 'Relatórios e indicadores financeiros do CRM',
+              caption: 'Relatórios para acompanhar resultados e reservas.',
+            },
+            {
+              image: '/assets/crm_06.png',
+              alt: 'Detalhes de uma consulta registrada no CRM',
+              caption: 'Acompanhamento das consultas e interações.',
+            },
+            {
+              image: '/assets/crm_07.png',
+              alt: 'Tela de cotação de reservas no CRM',
+              caption: 'Cotação com opções de datas e propriedades.',
+            },
+            {
+              image: '/assets/crm_08.png',
+              alt: 'Lista de tarefas da equipe no CRM',
+              caption: 'Organização das tarefas e seus status.',
+            },
+            {
+              image: '/assets/crm_09.png',
+              alt: 'Visão geral do dashboard do CRM',
+              caption: 'Resumo operacional com indicadores da plataforma.',
+            },
+            {
+              image: '/assets/crm_10.png',
+              alt: 'Visão financeira dos relatórios do CRM',
+              caption: 'Indicadores financeiros e fontes de reservas.',
+            },
+            {
+              image: '/assets/crm_11.png',
+              alt: 'Tabela de tarefas e atividades do CRM',
+              caption: 'Acompanhamento das atividades da equipe.',
             },
           ],
         },

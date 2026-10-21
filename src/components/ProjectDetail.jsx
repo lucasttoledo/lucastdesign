@@ -4,6 +4,54 @@ import SiteFooter from './SiteFooter'
 import SiteHeader from './SiteHeader'
 import { projects } from '../data'
 
+function ThemeComparison({ comparison }) {
+  const [position, setPosition] = useState(50)
+
+  return (
+    <section className="theme-comparison" aria-labelledby="theme-comparison-title">
+      <div className="case-gallery-heading">
+        <div>
+          <p className="eyebrow"><span />Aparência</p>
+          <h2 id="theme-comparison-title">Temas light e dark</h2>
+        </div>
+        <p>Arraste o controle para comparar os temas.</p>
+      </div>
+      <div
+        className="theme-comparison-view"
+        style={{ '--comparison-position': `${position}%` }}
+      >
+        <img
+          className="theme-comparison-image"
+          src={comparison.light.image}
+          alt={comparison.light.alt}
+        />
+        <div className="theme-comparison-overlay">
+          <img
+            className="theme-comparison-image"
+            src={comparison.dark.image}
+            alt={comparison.dark.alt}
+          />
+        </div>
+        <span className="theme-comparison-label is-light">Light</span>
+        <span className="theme-comparison-label is-dark">Dark</span>
+        <div className="theme-comparison-divider" aria-hidden="true">
+          <span />
+        </div>
+        <input
+          className="theme-comparison-slider"
+          type="range"
+          min="0"
+          max="100"
+          value={position}
+          onChange={(event) => setPosition(Number(event.target.value))}
+          aria-label="Comparar os temas light e dark"
+          aria-valuetext={`${position}% do tema dark`}
+        />
+      </div>
+    </section>
+  )
+}
+
 export default function ProjectDetail({ project }) {
   const [activeImage, setActiveImage] = useState(null)
   const caseStudy = project.caseStudy
@@ -14,6 +62,15 @@ export default function ProjectDetail({ project }) {
       || caseStudy.sections.flatMap(({ images = [] }) => images),
     [caseStudy],
   )
+  const stageImages = useMemo(
+    () => caseStudy.sections?.flatMap(({ stageImage }) => (
+      stageImage
+        ? [{ image: stageImage.src, alt: stageImage.alt, caption: stageImage.alt }]
+        : []
+    )) || [],
+    [caseStudy],
+  )
+  const lightboxImages = useMemo(() => [...gallery, ...stageImages], [gallery, stageImages])
   const openingSection = caseStudy.sections?.[0]
   const storySections = caseStudy.sections?.slice(1) || []
   const projectIndex = projects.findIndex(({ id }) => id === project.id)
@@ -25,10 +82,10 @@ export default function ProjectDetail({ project }) {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') setActiveImage(null)
       if (event.key === 'ArrowRight') {
-        setActiveImage((current) => (current + 1) % gallery.length)
+        setActiveImage((current) => (current + 1) % lightboxImages.length)
       }
       if (event.key === 'ArrowLeft') {
-        setActiveImage((current) => (current - 1 + gallery.length) % gallery.length)
+        setActiveImage((current) => (current - 1 + lightboxImages.length) % lightboxImages.length)
       }
     }
 
@@ -38,9 +95,9 @@ export default function ProjectDetail({ project }) {
       document.body.classList.remove('lightbox-open')
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [activeImage, gallery.length])
+  }, [activeImage, lightboxImages.length])
 
-  const currentImage = activeImage === null ? null : gallery[activeImage]
+  const currentImage = activeImage === null ? null : lightboxImages[activeImage]
 
   return (
     <>
@@ -91,24 +148,42 @@ export default function ProjectDetail({ project }) {
               {storySections.length > 0 && (
                 <section className="case-timeline" aria-label="Etapas do projeto">
                   {storySections.map((section, sectionIndex) => (
-                    <article key={section.title}>
-                      <span className="case-step">Etapa {String(sectionIndex + 1).padStart(2, '0')}</span>
-                      <h2>{section.title}</h2>
-                      {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                      {section.list && (
-                        <ul className="case-content-list">
-                          {section.list.map((item) => (
-                            <li key={`${item.title || ''}${item.text}`}>
-                              {item.title && <strong>{item.title}</strong>}
-                              {item.text}
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                      {section.quote && (
-                        <blockquote className="case-content-quote">
-                          <p>{section.quote}</p>
-                        </blockquote>
+                    <article className={section.stageImage ? 'has-image' : undefined} key={section.title}>
+                      <div className="case-timeline-copy">
+                        <span className="case-step">Etapa {String(sectionIndex + 1).padStart(2, '0')}</span>
+                        <h2>{section.title}</h2>
+                        {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                        {section.list && (
+                          <ul className="case-content-list">
+                            {section.list.map((item) => (
+                              <li key={`${item.title || ''}${item.text}`}>
+                                {item.title && <strong>{item.title}</strong>}
+                                {item.text}
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                        {section.quote && (
+                          <blockquote className="case-content-quote">
+                            <p>{section.quote}</p>
+                          </blockquote>
+                        )}
+                      </div>
+                      {section.stageImage && (
+                        <button
+                          className="case-timeline-image"
+                          type="button"
+                          onClick={() => {
+                            const stageImageOffset = storySections
+                              .slice(0, sectionIndex)
+                              .filter(({ stageImage }) => stageImage).length
+                            setActiveImage(gallery.length + stageImageOffset)
+                          }}
+                          aria-label={`Ampliar imagem: ${section.stageImage.alt}`}
+                        >
+                          <img src={section.stageImage.src} alt={section.stageImage.alt} loading="lazy" />
+                          <span className="case-gallery-zoom"><Expand size={20} aria-hidden="true" /> Ampliar</span>
+                        </button>
                       )}
                     </article>
                   ))}
@@ -128,6 +203,10 @@ export default function ProjectDetail({ project }) {
                 </div>
                 <p>{caseStudy.result}</p>
               </section>
+
+              {caseStudy.themeComparison && (
+                <ThemeComparison comparison={caseStudy.themeComparison} />
+              )}
 
               <section className="case-gallery" aria-labelledby="case-gallery-title">
                 <div className="case-gallery-heading">
@@ -298,7 +377,7 @@ export default function ProjectDetail({ project }) {
             type="button"
             onClick={(event) => {
               event.stopPropagation()
-              setActiveImage((activeImage - 1 + gallery.length) % gallery.length)
+              setActiveImage((activeImage - 1 + lightboxImages.length) % lightboxImages.length)
             }}
             aria-label="Imagem anterior"
           >
@@ -313,7 +392,7 @@ export default function ProjectDetail({ project }) {
             type="button"
             onClick={(event) => {
               event.stopPropagation()
-              setActiveImage((activeImage + 1) % gallery.length)
+              setActiveImage((activeImage + 1) % lightboxImages.length)
             }}
             aria-label="Próxima imagem"
           >
