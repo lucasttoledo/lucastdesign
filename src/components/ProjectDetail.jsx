@@ -7,8 +7,11 @@ import { projects } from '../data'
 export default function ProjectDetail({ project }) {
   const [activeImage, setActiveImage] = useState(null)
   const caseStudy = project.caseStudy
+  const galleryGroups = caseStudy.galleryGroups
   const gallery = useMemo(
-    () => caseStudy.gallery || caseStudy.sections.flatMap(({ images = [] }) => images),
+    () => caseStudy.gallery
+      || galleryGroups?.flatMap(({ images }) => images)
+      || caseStudy.sections.flatMap(({ images = [] }) => images),
     [caseStudy],
   )
   const openingSection = caseStudy.sections?.[0]
@@ -55,15 +58,17 @@ export default function ProjectDetail({ project }) {
             <span aria-current="page">{project.title}</span>
           </nav>
 
-          <header className="project-detail-heading">
-            <p className="eyebrow"><span />{project.eyebrow}</p>
-            <h1>{project.title}</h1>
-            <p className="project-detail-lead">{project.description}</p>
-            <dl className="project-meta">
-              <div><dt>Projeto</dt><dd>{caseStudy.client}</dd></div>
-              <div><dt>Ano</dt><dd>{caseStudy.year}</dd></div>
-              <div><dt>Atuação</dt><dd>{caseStudy.role}</dd></div>
-            </dl>
+          <header className={`project-detail-heading${project.headerImage ? ' has-detail-image' : ''}`}>
+            <div className="project-detail-copy">
+              <p className="eyebrow"><span />{project.eyebrow}</p>
+              <h1>{project.title}</h1>
+              <p className="project-detail-lead">{project.description}</p>
+              <dl className="project-meta">
+                <div><dt>Projeto</dt><dd>{caseStudy.client}</dd></div>
+                <div><dt>Ano</dt><dd>{caseStudy.year}</dd></div>
+                <div><dt>Atuação</dt><dd>{caseStudy.role}</dd></div>
+              </dl>
+            </div>
           </header>
 
           {caseStudy.sections ? (
@@ -132,21 +137,56 @@ export default function ProjectDetail({ project }) {
                   </div>
                   <p>Selecione uma imagem para ampliar.</p>
                 </div>
-                <div className="case-gallery-grid">
-                  {gallery.map((image, index) => (
-                    <button
-                      className="case-gallery-item"
-                      type="button"
-                      key={`${image.image}-${index}`}
-                      onClick={() => setActiveImage(index)}
-                      aria-label={`Ampliar imagem ${index + 1}: ${image.alt}`}
-                    >
-                      <img src={image.image} alt={image.alt} loading="lazy" />
-                      <span className="case-gallery-zoom"><Expand size={20} aria-hidden="true" /> Ampliar</span>
-                      <span className="case-gallery-caption">{image.caption}</span>
-                    </button>
-                  ))}
-                </div>
+                {galleryGroups ? (
+                  <div className="case-gallery-groups">
+                    {galleryGroups.map((group, groupIndex) => {
+                      const groupOffset = galleryGroups
+                        .slice(0, groupIndex)
+                        .reduce((total, previousGroup) => total + previousGroup.images.length, 0)
+
+                      return (
+                        <div className="case-gallery-group" key={group.type}>
+                          <h3>{group.title}</h3>
+                          <div className={`case-gallery-grid is-${group.type}`}>
+                            {group.images.map((image, imageIndex) => {
+                              const galleryIndex = groupOffset + imageIndex
+
+                              return (
+                                <button
+                                  className="case-gallery-item"
+                                  type="button"
+                                  key={image.image}
+                                  onClick={() => setActiveImage(galleryIndex)}
+                                  aria-label={`Ampliar imagem ${galleryIndex + 1}: ${image.alt}`}
+                                >
+                                  <img src={image.image} alt={image.alt} loading="lazy" />
+                                  <span className="case-gallery-zoom"><Expand size={20} aria-hidden="true" /> Ampliar</span>
+                                  <span className="case-gallery-caption">{image.caption}</span>
+                                </button>
+                              )
+                            })}
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                ) : (
+                  <div className="case-gallery-grid">
+                    {gallery.map((image, index) => (
+                      <button
+                        className="case-gallery-item"
+                        type="button"
+                        key={`${image.image}-${index}`}
+                        onClick={() => setActiveImage(index)}
+                        aria-label={`Ampliar imagem ${index + 1}: ${image.alt}`}
+                      >
+                        <img src={image.image} alt={image.alt} loading="lazy" />
+                        <span className="case-gallery-zoom"><Expand size={20} aria-hidden="true" /> Ampliar</span>
+                        <span className="case-gallery-caption">{image.caption}</span>
+                      </button>
+                    ))}
+                  </div>
+                )}
               </section>
               <p className="case-thanks">Obrigado!</p>
             </div>
@@ -230,6 +270,15 @@ export default function ProjectDetail({ project }) {
             </a>
           </nav>
         </div>
+
+        {project.headerImage && (
+          <img
+            className="project-detail-hero-image"
+            src={project.headerImage.src}
+            alt={project.headerImage.alt}
+          />
+        )}
+
       </main>
       <SiteFooter />
 

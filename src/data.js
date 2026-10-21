@@ -6,9 +6,12 @@ export const projects = [
     title: 'Redesign de Plataforma Agro – Mobile e Desktop',
     description:
       'Assumi todo o projeto de uma plataforma agro já prototipada, mas com baixa aceitação interna. A partir de análises heurísticas, propus soluções alinhadas a realidade do campo e as necessidades do negócio. Entreguei uma experiência fácil de usar, escalável e centrada no usuário, tanto para APP quanto para WEB.',
-    image:
-      'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=85',
-    alt: 'Equipe planejando uma solução digital para o agronegócio',
+    image: '/assets/mockup_projeto_agro.png',
+    alt: 'Mockup da plataforma Agro em um notebook',
+    headerImage: {
+      src: '/assets/mock_pagina_filha_agro.png',
+      alt: 'Mockup da página de acesso da plataforma Agro em um notebook',
+    },
     layout: 'image-first',
     presentation: 'row',
     caseStudy: {
@@ -20,6 +23,95 @@ export const projects = [
       resultHeading: 'Uma experiência conectada ao campo.',
       result:
         'A proposta reúne uma experiência mobile para o consultor e uma plataforma web para gestão, com fluxos reorganizados, navegação mais clara e uma base visual preparada para evoluir.',
+      galleryGroups: [
+        {
+          type: 'web',
+          title: 'Versão Web',
+          images: [
+            {
+              image: '/assets/Inicial.png',
+              alt: 'Dashboard inicial da plataforma Agro',
+              caption: 'Visão geral com indicadores e atalhos para as principais áreas.',
+            },
+            {
+              image: '/assets/Inicial - senha.png',
+              alt: 'Tela de acesso da plataforma Agro',
+              caption: 'Acesso à plataforma web.',
+            },
+            {
+              image: '/assets/Login - preenchido.png',
+              alt: 'Tela de login preenchida da plataforma Agro',
+              caption: 'Formulário de acesso com os campos preenchidos.',
+            },
+            {
+              image: '/assets/Acompanhamento de mercado.png',
+              alt: 'Tela web de acompanhamento de mercado',
+              caption: 'Acompanhamento de mercado em uma visão detalhada.',
+            },
+            {
+              image: '/assets/Acompanhamento de mercado - negociacao.png',
+              alt: 'Tela de negociação do acompanhamento de mercado',
+              caption: 'Dados de mercado e informações para negociação.',
+            },
+            {
+              image: '/assets/Notas fiscais.png',
+              alt: 'Área de notas fiscais da plataforma Agro',
+              caption: 'Consulta de notas fiscais.',
+            },
+            {
+              image: '/assets/Notas fiscais-modal.png',
+              alt: 'Detalhes de uma nota fiscal na plataforma Agro',
+              caption: 'Detalhes da nota fiscal em uma janela de consulta.',
+            },
+          ],
+        },
+        {
+          type: 'mobile',
+          title: 'Versão Mobile',
+          images: [
+            {
+              image: '/assets/Início mobile.png',
+              alt: 'Tela inicial mobile da plataforma Agro',
+              caption: 'Início e atalhos para as áreas mais usadas.',
+            },
+            {
+              image: '/assets/Login mobile.png',
+              alt: 'Tela mobile de login da plataforma Agro',
+              caption: 'Acesso à plataforma pelo celular.',
+            },
+            {
+              image: '/assets/Login - Preenchido mobile.png',
+              alt: 'Tela mobile de login preenchida',
+              caption: 'Formulário de acesso preenchido no celular.',
+            },
+            {
+              image: '/assets/Cadastro 1 mobile.png',
+              alt: 'Primeira etapa do cadastro na plataforma Agro mobile',
+              caption: 'Primeira etapa do cadastro.',
+            },
+            {
+              image: '/assets/Cadastro 2 mobile.png',
+              alt: 'Segunda etapa do cadastro na plataforma Agro mobile',
+              caption: 'Continuação do cadastro no celular.',
+            },
+            {
+              image: '/assets/Acompanhamento de mercado mobile.png',
+              alt: 'Acompanhamento de mercado na plataforma Agro mobile',
+              caption: 'Indicadores de mercado adaptados à tela mobile.',
+            },
+            {
+              image: '/assets/Financeiro mobile.png',
+              alt: 'Área financeira da plataforma Agro mobile',
+              caption: 'Informações financeiras no celular.',
+            },
+            {
+              image: '/assets/Notícias mobile.png',
+              alt: 'Notícias na plataforma Agro mobile',
+              caption: 'Notícias e atualizações do mercado.',
+            },
+          ],
+        },
+      ],
       sections: [
         {
           title: 'Contexto rápido do projeto',

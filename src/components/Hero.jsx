@@ -1,4 +1,5 @@
-import { ArrowDown, ArrowUpRight, Plus } from 'lucide-react'
+import { ArrowUpRight, Plus } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 
 function AnimatedText({ text, startIndex = 0 }) {
   return (
@@ -18,13 +19,49 @@ function AnimatedText({ text, startIndex = 0 }) {
 }
 
 export default function Hero() {
+  const heroRef = useRef(null)
+  const mockupRef = useRef(null)
+
+  useEffect(() => {
+    const hero = heroRef.current
+    const mockup = mockupRef.current
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const desktopViewport = window.matchMedia('(min-width: 1025px)')
+
+    if (!hero || !mockup || reduceMotion.matches || !desktopViewport.matches) return undefined
+
+    let frameId = null
+
+    const updateParallax = () => {
+      frameId = null
+      const progress = Math.min(Math.max(-hero.getBoundingClientRect().top / hero.offsetHeight, 0), 1)
+      mockup.style.setProperty('--hero-parallax-y', `${-progress * 72}px`)
+    }
+
+    const scheduleUpdate = () => {
+      if (frameId === null) frameId = window.requestAnimationFrame(updateParallax)
+    }
+
+    updateParallax()
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+
+    return () => {
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+      if (frameId !== null) window.cancelAnimationFrame(frameId)
+      mockup.style.removeProperty('--hero-parallax-y')
+    }
+  }, [])
+
   return (
-    <section className="hero" id="inicio">
+    <section className="hero" id="inicio" ref={heroRef}>
       <img
         className="hero-mockup"
         src="/assets/lucastdesign_mockup_min.png"
         alt=""
         aria-hidden="true"
+        ref={mockupRef}
       />
       <div className="hero-inner">
         <div className="hero-copy">
