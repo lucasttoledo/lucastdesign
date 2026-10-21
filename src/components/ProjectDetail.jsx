@@ -160,10 +160,6 @@ export default function ProjectDetail({ project }) {
                     <p>{caseStudy.overview}</p>
                   </div>
                 </div>
-                <figure className="project-cover">
-                  <img src={project.image} alt={project.alt} />
-                  <figcaption>{caseStudy.client} · {caseStudy.year}</figcaption>
-                </figure>
               </section>
 
               <section className="case-timeline" aria-label="Processo do projeto">

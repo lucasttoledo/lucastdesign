@@ -245,7 +245,7 @@ blockquote {
 .hero {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  /* overflow: hidden; */
   min-height: 650px;
   background: var(--ink);
 }
@@ -258,18 +258,42 @@ blockquote {
   background: url('/assets/bg_site.png') center bottom / cover no-repeat;
 }
 
-.hero-video {
+.hero-mockup {
   position: absolute;
   z-index: -1;
-  right: 0;
-  bottom: 70px;
-  width: min(72vw, 1020px);
-  height: min(78vh, 680px);
-  object-fit: contain;
-  object-position: right bottom;
-  opacity: 1;
-  mask-image: linear-gradient(to top, transparent, #000 28%);
+  /* right: 0;
+  bottom: 70px; */
+  /* width: min(72vw, 1020px);
+  height: min(78vh, 680px); */
+  object-fit: none;
+  /* object-position: center 15%; */
+  /* opacity: .94; */
   pointer-events: none;
+  right: 0;
+  width: 1050px;
+  height: 1222px;
+  object-position: left center;
+  top: -40px;
+
+  mask-image: linear-gradient(var(--ink), transparent);
+}
+
+@media (max-width: 2000px) {
+  .hero-mockup {
+      right: 0;
+      width: 808px;
+      height: 1222px;
+      object-position: left center;
+      top: -40px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .hero-mockup {
+      width: 608px;
+      height: 900px;
+      object-fit: cover;
+  }
 }
 
 .hero-glow {
@@ -374,9 +398,6 @@ blockquote {
     animation: none;
   }
 
-  .hero-video {
-    display: none;
-  }
 }
 
 .hero-description {
@@ -1231,7 +1252,7 @@ blockquote {
 }
 
 @media (max-width: 1024px) {
-  .hero-video {
+  .hero-mockup {
     display: none;
   }
 }

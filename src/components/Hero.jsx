@@ -20,14 +20,10 @@ function AnimatedText({ text, startIndex = 0 }) {
 export default function Hero() {
   return (
     <section className="hero" id="inicio">
-      <video
-        className="hero-video"
-        src="/assets/laptop_lucastdesign_home.webm"
-        autoPlay
-        muted
-        // loop
-        playsInline
-        preload="metadata"
+      <img
+        className="hero-mockup"
+        src="/assets/lucastdesign_mockup_min.png"
+        alt=""
         aria-hidden="true"
       />
       <div className="hero-inner">
@@ -49,7 +45,7 @@ export default function Hero() {
             <AnimatedText text=" e Web Designer" startIndex={26} />
           </h1> */}
           <p className="hero-description">
-            Criando soluções que unem UX estratégico, estética e desenvolvimento há mais de 15 anos. Trabalhando com grandes empresas e líderes de tecnologia.
+            Criando soluções que unem UX estratégico, estética e desenvolvimento há mais de 15 anos.<br />Trabalhando com grandes empresas e líderes de tecnologia.
           </p>
           <a className="message-field">
             <span>Faz um designer pra mim.</span>
