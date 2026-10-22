@@ -23,7 +23,7 @@ export default function SiteHeader({ projectPage = false }) {
   return (
     <header className={`site-header${isScrolled ? ' is-scrolled' : ''}`}>
       <a className="wordmark" href={`${homeHref}#inicio`} aria-label="Lucas T Design, início">
-        LUCAS<span>T</span>DESIGN
+        <img src="/assets/lucastdesign_logo.svg" alt="Lucas T Design" />
       </a>
 
       <nav className="main-nav" aria-label="Navegação principal">

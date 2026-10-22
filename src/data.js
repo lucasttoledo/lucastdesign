@@ -192,49 +192,73 @@ export const projects = [
   },
   {
     id: 'platform',
-    eyebrow: 'UX Research · Product Strategy',
-    title: 'Plataforma de gestão',
+    eyebrow: 'Design editorial · Apresentações institucionais · Motion',
+    title: 'Apresentações institucionais',
     description:
-      'Pesquisa, arquitetura de informação e prototipação para transformar processos complexos em uma experiência mais simples, eficiente e preparada para crescer.',
-    image:
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85',
-    alt: 'Pessoa utilizando um notebook',
+      'Uma apresentação institucional que transforma a história, os serviços e os diferenciais da Authentic Real Estate em uma narrativa visual clara, envolvente e fácil de acompanhar.',
+    image: '/assets/thumb_ppt.png',
+    alt: 'Apresentação institucional da Authentic Real Estate em um tablet',
+    headerImage: {
+      src: '/assets/mockup_ppt.png',
+      alt: 'Apresentação institucional da Authentic Real Estate exibida em um notebook',
+    },
     layout: 'copy-first',
     presentation: 'thumbnail',
     caseStudy: {
-      client: 'Plataforma de gestão',
-      year: '2023',
-      role: 'UX Research · Product Strategy',
+      client: 'Authentic Real Estate Team',
+      year: '2025',
+      role: 'Direção de arte · Design editorial',
       overview:
-        'Uma plataforma de gestão que transforma processos complexos em jornadas digitais mais simples, conectando pesquisa, arquitetura de informação e prototipação.',
+        'Uma apresentação institucional para mostrar quem é a Authentic, como atua no mercado imobiliário da Flórida e o que torna seu atendimento diferente. A narrativa organiza história, serviços e resultados em uma sequência visual coesa, com informação fácil de localizar e acompanhar.',
       challenge:
-        'As pessoas precisavam navegar por tarefas e informações relacionadas sem perder contexto ou depender de etapas desnecessárias.',
+        'Reunir muitas informações — trajetória, proposta de valor, serviços e reconhecimento — sem transformar os slides em páginas densas. Cada tela precisava ter uma mensagem principal evidente, preservar o ritmo de leitura e manter a atenção durante a apresentação.',
       approach:
-        'A pesquisa ajudou a identificar prioridades e pontos de atrito. A partir disso, estruturamos a navegação e prototipamos fluxos com foco em clareza, eficiência e adaptação a diferentes dispositivos.',
+        'A direção visual combina a identidade da marca, contrastes marcantes e tipografia expressiva. Títulos diretos, hierarquia consistente e blocos de conteúdo bem espaçados ajudam a leitura; imagens, formas gráficas e transições sutis dão ritmo à narrativa sem competir com a mensagem.',
+      resultHeading: 'Uma história de marca que prende o olhar e facilita a leitura.',
       result:
-        'Uma experiência mais objetiva e uma direção de produto baseada nas necessidades reais de quem usa a plataforma.',
+        'O resultado é uma apresentação visualmente consistente e fácil de percorrer, que dá destaque à proposta da Authentic e conduz o público da história da empresa aos seus diferenciais, serviços e resultados.',
       quote:
-        'Simplificar um processo começa por entender o que realmente importa para quem está usando o produto.',
+        'Uma apresentação bonita chama atenção; uma apresentação bem estruturada faz cada mensagem ser lembrada.',
       gallery: [
         {
-          image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=85',
-          alt: 'Pessoa utilizando um notebook para trabalhar',
-          caption: 'Jornadas pensadas para aproximar pessoas e informação.',
+          image: '/assets/ppt-1.png',
+          alt: 'Slide sobre liderança e valores da Authentic',
+          caption: 'Uma mensagem de liderança apoiada por hierarquia visual e imagens de contexto.',
         },
         {
-          image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=85',
-          alt: 'Equipe colaborando em uma reunião',
-          caption: 'Pesquisa e colaboração orientam as decisões de produto.',
+          image: '/assets/ppt-2.png',
+          alt: 'Slide sobre a origem e o posicionamento da Authentic',
+          caption: 'A história da marca e o propósito que orienta sua atuação.',
         },
         {
-          image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=85',
-          alt: 'Equipe analisando informações em uma tela',
-          caption: 'Informações apresentadas com hierarquia e contexto.',
+          image: '/assets/ppt-3.png',
+          alt: 'Slide sobre a compra de imóveis e os serviços da Authentic',
+          caption: 'Conteúdo explicativo organizado para tornar a proposta fácil de entender.',
         },
         {
-          image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1600&q=85',
-          alt: 'Equipe de produto trabalhando em conjunto',
-          caption: 'Uma base preparada para evoluir com as necessidades do negócio.',
+          image: '/assets/ppt-4.png',
+          alt: 'Slide com reconhecimentos e resultados da Authentic',
+          caption: 'Conquistas apresentadas em uma composição clara e escaneável.',
+        },
+        {
+          image: '/assets/ppt-5.png',
+          alt: 'Slide sobre a estratégia de marketing da Authentic',
+          caption: 'Diferenciais e ações de marketing destacados com apoio visual.',
+        },
+        {
+          image: '/assets/ppt-6.png',
+          alt: 'Slide institucional sobre excelência no atendimento',
+          caption: 'Um princípio da marca ganha protagonismo em uma tela de alto contraste.',
+        },
+        {
+          image: '/assets/ppt-7.png',
+          alt: 'Slide sobre liderança e atendimento ao cliente',
+          caption: 'Texto, imagem e elementos gráficos conduzem o olhar pela mensagem.',
+        },
+        {
+          image: '/assets/ppt-8.png',
+          alt: 'Slide sobre excelência e compromisso com os clientes',
+          caption: 'Encerramento da narrativa com foco nos valores da empresa.',
         },
       ],
     },
@@ -248,6 +272,10 @@ export const projects = [
       'Redesign e estruturação de uma intranet para um grupo com quatro empresas, conectando comunicação, produtividade e cultura em um ambiente responsivo e feito para as diferentes realidades dos times.',
     image: '/assets/perfil-intranet-blur.jpg',
     alt: 'Interface da intranet desenvolvida para um grupo de empresas',
+    headerImage: {
+      src: '/assets/mockup_intranet.png',
+      alt: 'Mockup da intranet para grupo de empresas',
+    },
     layout: 'copy-first',
     presentation: 'row',
     caseStudy: {
@@ -384,9 +412,12 @@ export const projects = [
     title: 'Sites institucionais e landing pages',
     description:
       'Projetos digitais para diferentes segmentos, concebidos para apresentar marcas, produtos e serviços com clareza e orientar cada visitante até a ação mais importante.',
-    image:
-      'https://lucastdesign.com.br/wp-content/uploads/2025/04/Landing-Page-Evento-Tiago-_-Versao-Marketing-scaled.png',
-    alt: 'Landing page desenvolvida para uma campanha digital',
+    image: '/assets/thumb_sites_sites.png',
+    alt: 'Mockup de sites institucionais e landing pages',
+    headerImage: {
+      src: '/assets/mockup_sites.png',
+      alt: 'Mockup dos projetos de sites institucionais e landing pages',
+    },
     layout: 'copy-first',
     presentation: 'thumbnail',
     caseStudy: {
@@ -398,6 +429,7 @@ export const projects = [
       resultHeading: 'Experiências digitais feitas para cada objetivo.',
       result:
         'Os projetos reúnem páginas institucionais e landing pages para diferentes segmentos, organizando a comunicação em torno das necessidades da marca e das ações esperadas do público.',
+      galleryPresentation: 'page-scroll',
       sections: [
         {
           title: 'Experiências digitais orientadas por objetivos',
@@ -421,19 +453,14 @@ export const projects = [
           ],
           images: [
             {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/Landing-Page-pos-Webnar-scaled.png',
-              alt: 'Landing page de campanha para webinar',
-              caption: 'Página de campanha com conteúdo estruturado para conversão.',
+              image: '/assets/lp-tiago.png',
+              alt: 'Landing page para webinar de imóveis em Orlando',
+              caption: 'Página de inscrição para webinar sobre imóveis em Orlando.',
             },
             {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/Landing-Page-Vendas-V2-scaled.png',
-              alt: 'Página de vendas para produto ou serviço',
-              caption: 'Apresentação da oferta e dos seus principais benefícios.',
-            },
-            {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/Landing-Page-Vendas-V2-1-scaled.png',
-              alt: 'Variação de uma landing page de vendas',
-              caption: 'Uma experiência alinhada à campanha e à identidade da marca.',
+              image: '/assets/authentic-lp-1.png',
+              alt: 'Landing page da Authentic Real Estate Team',
+              caption: 'Apresentação de imóveis de alto padrão nos Estados Unidos.',
             },
           ],
         },
@@ -445,12 +472,22 @@ export const projects = [
           ],
           images: [
             {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/Home-v2-scaled.png',
-              alt: 'Página inicial de um website para pesquisa de itens de casamento',
-              caption: 'Website para pesquisa e descoberta de itens para casamento.',
+              image: '/assets/buscasei_site.png',
+              alt: 'Website BuscaSei para planejamento de casamentos',
+              caption: 'Website para encontrar fornecedores e espaços para casamento.',
             },
             {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/image-342-scaled.png',
+              image: '/assets/manager-prop.png',
+              alt: 'Website da Manager Prop para gestão de imóveis',
+              caption: 'Website para apresentação de serviços de gestão imobiliária.',
+            },
+            {
+              image: '/assets/miami-site.png',
+              alt: 'Website para imóveis em Miami',
+              caption: 'Website para apresentar oportunidades imobiliárias em Miami.',
+            },
+            {
+              image: '/assets/image-342-scaled.png',
               alt: 'Site institucional de uma empresa de areia e pedra',
               caption: 'Presença digital para empresa de materiais de construção.',
             },
@@ -466,9 +503,8 @@ export const projects = [
     title: 'Design para mídias sociais',
     description:
       'Criação de peças e sistemas visuais para marcas de diferentes segmentos, com consistência entre formatos, plataformas e momentos de comunicação.',
-    image:
-      'https://lucastdesign.com.br/wp-content/uploads/2025/04/image-343.png',
-    alt: 'Peça gráfica para publicação em mídias sociais',
+    image: '/assets/thumb_social_media.png',
+    alt: 'Composição de peças para redes sociais da Authentic Real Estate',
     layout: 'image-first',
     presentation: 'thumbnail',
     caseStudy: {
@@ -480,6 +516,39 @@ export const projects = [
       resultHeading: 'Uma linguagem visual consistente em diferentes canais.',
       result:
         'O conjunto de peças e padrões visuais foi pensado para adaptar as marcas a feeds, stories, capas e campanhas sazonais, mantendo unidade entre formatos e plataformas.',
+      galleryLayout: 'square-three',
+      gallery: [
+        {
+          image: '/assets/authentic_social_1.png',
+          alt: 'Carrossel da Authentic sobre viver em Orlando',
+          caption: 'Conteúdo informativo organizado em uma sequência visual para redes sociais.',
+        },
+        {
+          image: '/assets/authentic_social_2.png',
+          alt: 'Publicação da Authentic sobre Orlando',
+          caption: 'Tipografia, fotografia e identidade da marca em uma composição editorial.',
+        },
+        {
+          image: '/assets/authentic_social_3.png',
+          alt: 'Mockup de publicação da Authentic no Instagram',
+          caption: 'Aplicação da identidade visual em uma publicação para Instagram.',
+        },
+        {
+          image: '/assets/area_social_1.png',
+          alt: 'Publicação da Pedra & Areia sobre a chegada de produtos',
+          caption: 'Peça promocional da Pedra & Areia para redes sociais.',
+        },
+        {
+          image: '/assets/area_social_2.png',
+          alt: 'Publicação da Pedra & Areia sobre confiança e qualidade',
+          caption: 'Comunicação da marca com foco em confiança e qualidade.',
+        },
+        {
+          image: '/assets/area_social_1-1.png',
+          alt: 'Publicação da Pedra & Areia sobre preços',
+          caption: 'Variação de campanha destacando preço e oferta.',
+        },
+      ],
       sections: [
         {
           title: 'Uma presença visual reconhecível em cada canal',
@@ -494,51 +563,12 @@ export const projects = [
             'As entregas incluem layouts para feed e stories, capas para Facebook e YouTube e padrões para publicações recorrentes. A organização dos elementos considera as proporções e o ritmo próprios de cada formato, além da leitura em telas menores.',
             'Em vez de tratar cada publicação como uma peça isolada, os padrões criam uma base que facilita a produção de novas comunicações e ajuda a marca a manter uma presença mais coesa em diferentes plataformas.',
           ],
-          images: [
-            {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/image-344.png',
-              alt: 'Peça de design para publicação social',
-              caption: 'Composição visual adaptada ao formato de publicação.',
-            },
-            {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/image-345.png',
-              alt: 'Conteúdo visual para canais sociais',
-              caption: 'Variações que preservam a identidade da marca.',
-            },
-            {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/image-346.png',
-              alt: 'Peça gráfica para comunicação digital',
-              caption: 'Peças pensadas para diferentes momentos de comunicação.',
-            },
-          ],
         },
         {
           title: 'Campanhas e conteúdos para diferentes momentos',
           paragraphs: [
             'As peças também acompanham campanhas e datas especiais, transformando a identidade de cada cliente em comunicações relevantes para ocasiões específicas. A direção de arte busca equilibrar o tema da campanha com a linguagem própria da marca.',
             'O conjunto inclui exemplos para períodos festivos e conteúdos promocionais, com adaptações para manter a mensagem clara em cada rede e formato.',
-          ],
-          images: [
-            {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/Natal_Insta_01-1024x1024.jpg',
-              alt: 'Publicação de Natal para Instagram',
-              caption: 'Comunicação sazonal alinhada à identidade da marca.',
-            },
-            {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/Natal_Insta_02-1024x1024.jpg',
-              alt: 'Segunda peça de campanha de Natal para Instagram',
-              caption: 'Variação de campanha para manter unidade visual.',
-            },
-            {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/Windsor-Cay-InstagramWindsor_cay_01-1024x1024.jpg',
-              alt: 'Publicação para redes sociais da Windsor Cay',
-              caption: 'Conteúdo para redes sociais de marca de hospedagem.',
-            },
-            {
-              image: 'https://lucastdesign.com.br/wp-content/uploads/2025/04/Ano-novo-2025-Authentc_01-1024x1024.jpg',
-              alt: 'Peça de Ano Novo para redes sociais',
-              caption: 'Campanha de Ano Novo adaptada para redes sociais.',
-            },
           ],
         },
       ],

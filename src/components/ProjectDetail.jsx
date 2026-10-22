@@ -122,8 +122,8 @@ export default function ProjectDetail({ project }) {
               <p className="project-detail-lead">{project.description}</p>
               <dl className="project-meta">
                 <div><dt>Projeto</dt><dd>{caseStudy.client}</dd></div>
-                <div><dt>Ano</dt><dd>{caseStudy.year}</dd></div>
                 <div><dt>Atuação</dt><dd>{caseStudy.role}</dd></div>
+                <div><dt>Ano</dt><dd>{caseStudy.year}</dd></div>
               </dl>
             </div>
           </header>
@@ -214,9 +214,37 @@ export default function ProjectDetail({ project }) {
                     <p className="eyebrow"><span />Detalhes do projeto</p>
                     <h2 id="case-gallery-title">Uma visão mais de perto.</h2>
                   </div>
-                  <p>Selecione uma imagem para ampliar.</p>
+                  <p>
+                    {caseStudy.galleryPresentation === 'page-scroll'
+                      ? 'Role dentro de cada prévia para explorar as páginas.'
+                      : 'Selecione uma imagem para ampliar.'}
+                  </p>
                 </div>
-                {galleryGroups ? (
+                {caseStudy.galleryPresentation === 'page-scroll' ? (
+                  <div className="case-page-previews">
+                    {gallery.map((image, index) => (
+                      <figure className="case-page-preview" key={`${image.image}-${index}`}>
+                        <div
+                          className="case-page-preview-scroll"
+                          tabIndex="0"
+                          role="region"
+                          aria-label={`Prévia rolável: ${image.alt}`}
+                        >
+                          <button
+                            className="case-page-preview-image"
+                            type="button"
+                            onClick={() => setActiveImage(index)}
+                            aria-label={`Ampliar imagem ${index + 1}: ${image.alt}`}
+                          >
+                            <img src={image.image} alt={image.alt} loading="lazy" />
+                            <span className="case-gallery-zoom"><Expand size={20} aria-hidden="true" /> Ampliar</span>
+                          </button>
+                        </div>
+                        <figcaption className="case-page-preview-caption">{image.caption}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                ) : galleryGroups ? (
                   <div className="case-gallery-groups">
                     {galleryGroups.map((group, groupIndex) => {
                       const groupOffset = galleryGroups
@@ -250,7 +278,7 @@ export default function ProjectDetail({ project }) {
                     })}
                   </div>
                 ) : (
-                  <div className="case-gallery-grid">
+                  <div className={`case-gallery-grid${caseStudy.galleryLayout ? ` is-${caseStudy.galleryLayout}` : ''}`}>
                     {gallery.map((image, index) => (
                       <button
                         className="case-gallery-item"
