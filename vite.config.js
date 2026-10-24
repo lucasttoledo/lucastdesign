@@ -6,7 +6,7 @@ function mediumFeedMiddleware() {
   return {
     name: 'medium-feed-middleware',
     configureServer(server) {
-      server.middlewares.use('/api/medium-feed', async (request, response) => {
+      server.middlewares.use('/api/medium-feed.xml', async (request, response) => {
         if (request.method !== 'GET') {
           response.setHeader('Allow', 'GET')
           response.statusCode = 405
@@ -25,6 +25,13 @@ function mediumFeedMiddleware() {
           response.statusCode = 502
           response.end(JSON.stringify({ error: 'Não foi possível carregar o feed do Medium.' }))
         }
+      })
+    },
+    async generateBundle() {
+      this.emitFile({
+        type: 'asset',
+        fileName: 'api/medium-feed.xml',
+        source: await fetchMediumFeed(),
       })
     },
   }

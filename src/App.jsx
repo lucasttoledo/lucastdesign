@@ -8,7 +8,7 @@ import PillarCard from './components/PillarCard'
 import ProjectDetail from './components/ProjectDetail'
 import { metrics, pillars, projects } from './data'
 
-const mediumFeedUrl = '/api/medium-feed'
+const mediumFeedUrl = '/api/medium-feed.xml'
 
 function ProjectsSection() {
   const rowProjects = projects.filter((project) => project.presentation === 'row')

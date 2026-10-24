@@ -263,6 +263,19 @@ blockquote {
   background: url('/assets/bg_site.png') center bottom / cover no-repeat;
 }
 
+.hero-video {
+  position: absolute;
+  z-index: -1;
+  object-fit: contain;
+  pointer-events: none;
+  right: 0;
+  width: 1190px;
+  height: 950px;
+  object-position: left center;
+  top: 0px;
+  mask-image: linear-gradient(var(--ink), transparent);
+}
+
 .hero-mockup {
   position: absolute;
   z-index: -1;
@@ -473,7 +486,7 @@ blockquote {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 13px;
+  margin-top: 53px;
 }
 
 .pill-button {

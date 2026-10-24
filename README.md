@@ -9,9 +9,9 @@ Currently, two official plugins are available:
 
 ## Medium articles
 
-The latest four articles are loaded from `api/medium-feed.js`. This endpoint fetches the Medium RSS feed on the server, avoiding browser CORS restrictions. The same endpoint is available on the Vite development server.
+The latest four articles are loaded from `/api/medium-feed.xml`. The Vite build fetches the Medium RSS feed and includes it as a static file, avoiding browser CORS restrictions and supporting static hosting.
 
-On Vercel, `api/medium-feed.js` runs as a serverless function. Locally, `vite.config.js` provides the `/api/medium-feed` development middleware.
+Locally, `vite.config.js` provides the `/api/medium-feed.xml` development middleware. `api/medium-feed.js` also exposes the feed as a serverless function on Vercel.
 
 ## Project case studies
 
